@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+</head>
+<body>
+    <!-- Improved Interface with better layout, styling, and usability -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f6fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 32px;
+        }
+        section {
+            border: none;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+            margin: 0;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            color: #2d3a4b;
+            margin-top: 0;
+        }
+        p {
+            color: #4a5568;
+        }
+        .code-label {
+            display: block;
+            margin: 12px 0 6px 0;
+            font-weight: 500;
+            color: #3b4252;
+        }
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            font-family: 'Fira Mono', 'Consolas', monospace;
+            font-size: 1rem;
+            border: 1px solid #bfc9d1;
+            border-radius: 6px;
+            padding: 12px;
+            resize: vertical;
+            background: #f9fafb;
+            transition: border 0.2s;
+        }
+        textarea:focus {
+            border: 1.5px solid #4f8cff;
+            outline: none;
+            background: #fff;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px;
+            }
+            textarea {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+    <div class="container">
+        <section id="repsontion">
+            <h2>Responsibility</h2>
+            <p>Here is the content for the responsibility section.</p>
+        </section>
+        <h2>Project 1</h2>
+        <button onclick="showCodeArea()" class="show-code-btn">Show Code Area</button>
+        <style>
+            .show-code-btn {
+            background: linear-gradient(90deg, #4f8cff 0%, #5e17eb 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(94,23,235,0.08);
+            transition: 0.2s, transform 0.1s;
+            margin: 18px 0 24px 0;
+            letter-spacing: 0.5px;
+            }
+            .show-code-btn:hover, .show-code-btn:focus {
+            background: linear-gradient(90deg, #5e17eb 0%, #4f8cff 100%);
+            transform: translateY(-2px) scale(1.03);
+            outline: none;
+            }
+        </style>
+        <section id="project" style="display:none;">
+            <label class="code-label" for="codeArea1">Your Code:</label>
+            <textarea id="codeArea1" rows="10" 
+            placeholder="Write your code here..."
+             readonly>import tkinter as tk
+from tkinter import ttk
+from tkcalendar import Calendar
+import random
+
+screen = tk.Tk()
+screen.title("Gestion de Location")
+screen.geometry("500x605")
+screen.resizable(False, False)
+screen.config(bg="#5e17eb")
+screen.iconbitmap("4.ico")
+image = tk.PhotoImage(file="3-removebgpng.png").subsample(2, 2)
+
+# Create a style object
+style = ttk.Style()
+style.configure("Validation.TLabel",font=('Arial', 12, 'bold'))
+style.configure("Validation.TLabel",foreground=[('invalid', '#e74c3c'), ('valid', '#2ecc71')])
+
+# Clear all widgets in Tab3 except the menu button
+def clear_Tab3():
+    for i in Tab3.winfo_children():
+        if i != Menu :
+          i.destroy()
+
+def grad_date():
+    date.config(text = "Selected Date is: " + calend.get_date())
+
+def show_vehicle(vehicle_name,file_vehicle):
+    Clear = ttk.Button(Tab3,text="Clear",command=clear_Tab3).pack(side="bottom")
+    clear_Tab3()
+
+    # Add title
+    title = ttk.Label(Tab3, text=f"Vehicle : {vehicle_name}", style="TLabel")
+    title.pack(pady=5)
+    
+    # Add validation status
+    status = random.choice(["Invalid", "Valid"])
+    lab1 = ttk.Label(Tab3, text=status, style=f"Validation.TLabel",foreground='#e74c3c' if status == "Invalid" else '#2ecc71',borderwidth=5)
+    lab1.pack(pady=5)
+
+    vehicle_img = tk.PhotoImage(file=file_vehicle).subsample(2, 2)
+    img_label = tk.Label(Tab3, image=vehicle_img)
+    img_label.image = vehicle_img
+    img_label.pack(pady=10)
+
+    Clear = ttk.Button(Tab3,text="Clear",command=clear_Tab3)
+    Clear.pack(side="bottom",pady=20)
+
+def BNZ(): 
+    show_vehicle("BNZ","hadi-dyl-mstafa.png")
+
+def RS6():
+    show_vehicle("RS6","15035_st0640_116.png")
+
+def Fiat():
+    show_vehicle("Fiat","Fiat1.png")
+
+Note_Book = ttk.Notebook(screen, width=450)
+Tab1 = ttk.Frame(Note_Book)
+Tab2 = ttk.Frame(Note_Book)
+Tab3 = ttk.Frame(Note_Book)
+Note_Book.add(Tab1, text="Screen 1")
+Note_Book.add(Tab2, text="Screen 2")
+Note_Book.add(Tab3, text="Screen 3")
+
+tk.Label(Tab1, image=image, bd=0,bg="#f0f0f0").pack(pady=2)
+
+# All Frames The Label and Entry
+Fram = ttk.Frame(Tab1)
+Fram.pack(padx=30, pady=5, expand=True, fill="both")
+
+# Configure styles
+style = ttk.Style()
+style.configure("TLabel", font=('Arial', 10, "bold"), padding=5)
+style.configure("TEntry", padding=5)
+style.configure("TButton", font=('Arial', 10, "bold"), padding=5)
+style.configure("TRadiobutton", font=('Arial', 10), padding=5)
+style.configure("TCombobox", padding=5)
+
+# Frame 1 Name
+Fram1 = ttk.Frame(Fram)
+Fram1.pack(padx=10, pady=2, fill="x")
+ttk.Label(Fram1, text="Nom du client:     ", style="TLabel").pack(side="left", padx=5, pady=2)
+ttk.Entry(Fram1, style="TEntry").pack(fill="x", padx=5, pady=2, expand=True)
+
+# Frame 2 First Name
+Fram2 = ttk.Frame(Fram)
+Fram2.pack(padx=10, pady=2, fill="x")
+ttk.Label(Fram2, text="Prénom du client:", style="TLabel").pack(side="left", padx=5, pady=2)
+ttk.Entry(Fram2, style="TEntry").pack(fill="x", padx=5, pady=2, expand=True)
+
+# Frame 3 Client Number
+Fram3 = ttk.Frame(Fram)
+Fram3.pack(padx=10, pady=2, fill="x")
+ttk.Label(Fram3, text="Numéro de client:", style="TLabel").pack(side="left", padx=5, pady=2)
+ttk.Entry(Fram3, style="TEntry").pack(fill="x", padx=5, pady=2, expand=True)
+
+# Frame 4 License
+Fram4 = ttk.Frame(Fram)
+Fram4.pack(padx=10, pady=2, fill="x")
+ttk.Label(Fram4, text="Avez-vous un permis:", style="TLabel").pack(side="left", padx=5, pady=2)
+var = tk.StringVar()
+var.set("Yes")
+ttk.Radiobutton(Fram4, text="Oui", variable=var, value="Yes", style="TRadiobutton").pack(padx=5, side="left")
+ttk.Radiobutton(Fram4, text="Non", variable=var, value="No", style="TRadiobutton").pack(padx=5, side="left")
+
+# Frame 5 Max Persons
+Fram5 = ttk.Frame(Fram)
+Fram5.pack(padx=10, pady=2, fill="x")
+ttk.Label(Fram5, text="Nombre de personnes maximal:", style="TLabel").pack(side="left", padx=5, pady=2)
+sepn = ttk.Combobox(Fram5, values=[1, 2, 3, 4, 5, 6, 7], style="TCombobox")
+sepn.pack(padx=5, pady=2, fill="x", expand=True)
+
+# Centered Button
+button_frame = ttk.Frame(Tab1)
+button_frame.pack(pady=2, fill="x")
+ttk.Button(button_frame, text="Enregistrer", style="TButton").pack(pady=30)
+
+# Configure style for the Menubutton
+style = ttk.Style()
+style.configure("TMenubutton", font=('Georgia', 10, 'bold'), padding=5,relief="raised")
+
+# Create the Menubutton with styling
+Menu = ttk.Menubutton(Tab3, text="Tous les Véhicules",style="TMenubutton")
+Menu.pack(pady=20, padx=10)
+
+# Configure the dropdown menu
+Menu_Option = tk.Menu(Menu, tearoff=False, font=('Georgia', 10,"bold"), bg='white',fg='black',relief="sunken")
+
+# Add menu options
+Menu_Option.add_command(label="BNZ", command=BNZ)
+Menu_Option.add_separator()
+Menu_Option.add_command(label="RS5", command=RS6)
+Menu_Option.add_separator()
+Menu_Option.add_command(label="Fiat", command=Fiat)
+Menu.config(menu=Menu_Option)
+Note_Book.pack()
+
+ttk.Label(Tab2,text="Select La Date :").pack(pady=20)
+
+# Add Calendar
+calend = Calendar(Tab2, selectmode='day', year=2025, month=1, day=1,width=5,height=8)
+calend.pack(pady=3, padx=10, fill="x")
+
+date = ttk.Label(Tab2, text = "")
+date.pack(pady = 10)
+
+# Add Button and Label
+ttk.Button(Tab2, text ="Get Date",command = grad_date).pack(pady = 10)
+
+# Label the creation By Said Mazouz
+ttk.Label(screen,text="© SAID MAZOUZ 2025",style="TLabel",foreground="white",background="#5e17eb").pack(side="bottom")
+
+screen.mainloop()</textarea>
+        </section>
+        <script>
+            function showCodeArea() {
+                var section = document.getElementById('project');
+                if (section.style.display === 'none' || section.style.display === '') {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            }
+        </script>
+        <!-- Python code execution is not supported directly in HTML for security reasons.
+            However, you can provide a "Copy to Clipboard" button for users to easily copy the code and run it in their Python environment. -->
+        <button onclick="copyCode()" class="show-code-btn" style="margin-top:10px;">Copy Code to Clipboard</button>
+        <script>
+        function copyCode() {
+            var textarea = document.getElementById('codeArea1');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand('copy');
+            alert('Code copied to clipboard! Paste it into your Python editor to run.');
+        }
+        </script>
+        <p style="color:#4a5568; margin-top:12px;">
+            To test/run the code: <br>
+            1. Click "Show Code Area" and then "Copy Code to Clipboard".<br>
+            2. Paste the code into a <b>.py</b> file in your Python environment.<br>
+            3. Make sure you have <code>tkinter</code> and <code>tkcalendar</code> installed.<br>
+            4. Run the file using <code>python filename.py</code> in your terminal or IDE.
+        </p>
+    </div>
+
+</body>
+</html>
