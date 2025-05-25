@@ -1,3 +1,5 @@
+/* Fixed and improved CSS */
+
 :root {
   --primary: #2563eb;       
   --secondary: #7c3aed;    
@@ -20,21 +22,46 @@ body {
   min-height: 100vh;
 }
 
+/* Fixed logo styling */
+.logo {
+  height: 45px; 
+  width: auto;
+  transition: transform 0.3s ease;
+  background-color: transparent;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+}
+
+.logo:hover {
+  transform: scale(1.05); 
+}
+
 nav {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(5px);
-  padding: 1.5rem 5%;
-  position: sticky;
+  padding: 1rem 10%;
+  position: stickyz;
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Fixed nav structure */
+.nav-brand {
+  display: flex;
+  align-items: center;
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  justify-content: center;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li a {
@@ -51,7 +78,8 @@ nav ul li a:hover {
   background: rgba(37, 99, 235, 0.1);
 }
 
-.hero {
+/* home section */
+.home {
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -59,9 +87,8 @@ nav ul li a:hover {
   align-items: center;
   text-align: center;
   padding: 0 2rem;
-  position: 2rem;
+  position: relative;
   overflow: hidden;
-
 }
 
 .image {
@@ -70,7 +97,7 @@ nav ul li a:hover {
     padding-top: 0.5rem;
     top: 0;
 }
-.hero::before {
+.home::before {
   content: icon;
   position: absolute;
   top: 0;
@@ -81,7 +108,7 @@ nav ul li a:hover {
   z-index: -1;
 }
 
-.hero h1 {
+.home h1 {
   font-size: 3.5rem;
   margin-bottom: 1.5rem;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
@@ -91,14 +118,14 @@ nav ul li a:hover {
   line-height: 1.2;
 }
 
-.hero p {
+.home p {
   font-size: 1.25rem;
   max-width: 600px;
   margin: 0 auto 2.5rem;
   color: #64748b;
 }
 
-.hero button {
+.home button {
   padding: 0.8rem 2.5rem;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   color: white;
@@ -110,11 +137,27 @@ nav ul li a:hover {
   box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
 }
 
-.hero button:hover {
+.home button:hover {
   transform: translateY(-7px);
   box-shadow: 0 12px 15px rgba(37, 99, 235, 0.3);
 }
+.home span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
 
+.home span a img{
+  width: 30px;
+  height: 30px;
+  margin: 0 1rem;
+  transition: transform 0.3s ease;
+}
+
+.home span a img:hover {
+  transform: scale(1.2);
+}
 /* About Section */
 .about {
   padding: 6rem 2rem;
@@ -132,43 +175,96 @@ nav ul li a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 1.5rem;
+  margin: 2rem auto;
   max-width: 800px;
-  margin: 2rem auto 0;
-  font-style: oblique;
-  font-size: 20px;
 }
 
 .skills span {
-    background-image: url("Soothing Black .gif");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: aliceblue;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-weight: 500; 
-    cursor: pointer;
+  font-style: oblique;
+  display: flex;
+  align-items: center;
+  gap: 0.73rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.1);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Individual skill colors */
+.skills span:nth-child(1) {
+  background: rgba(228, 77, 38, 0.1);
+  color: #e44d26;
+}
+.skills span:nth-child(2) {
+  background: rgba(21, 114, 182, 0.1);
+  color: #1572b6;
+}
+.skills span:nth-child(3) {
+  background: rgba(247, 223, 30, 0.1);
+  color: #f7df1e;
+}
+.skills span:nth-child(4) {
+  background: rgba(0, 122, 204, 0.1);
+  color: #007acc;
+}
+.skills span:nth-child(5) {
+  background: rgba(0, 204, 68, 0.1);
+  color: #00b300;
+}
+
+/* Hover animations */
 .skills span:hover {
-  background: var(--dark);
-  color: white;
-  transform: translateY(-2px);
+  transform: translateY(-20px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
+
+/* Icon animations */
 .skills img {
-    width: 25px;
-    height: 25px;
+  width: 28px;
+  height: 28px;
+  transition: transform 0.4s ease;
 }
+
+.skills span:hover img {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.skills span {
+  animation: pulse 2s infinite;
+}
+.github {
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  border: 0.5rem solid #006eff0f;
+  flex-wrap: wrap;
+}
+
+.github iframe {
+  padding: 1rem;
+  border: 0;
+  border-radius: 3rem;
+  width: 45rem;
+  max-width: 100%;
+  min-width: 250px;
+  height: 310px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* Projects Section */
 .projects {
   padding: 6rem 2rem;
   background: #f8fafc;
+  text-align: center;
 }
 
 .projects h2 {
@@ -184,24 +280,28 @@ nav ul li a:hover {
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  animation: mymove 5s linear infinite;
+  position: relative;
+  animation-direction: alternate;
 }
-
+@keyframes mymove {
+  from {left: 0px;}
+  to {left: 300px;}
+}
 .project-card {
-  background-image: url('download.gif');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 2rem;
+  background: transparent;
+  padding: 6rem;
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .project-card h3 {
     font-size: 1.5rem;
 }
 .project-card p {
-    padding: 1rem;
+    padding: 0.5rem;
 }
 .project-card button {
     margin: 1rem;
@@ -210,27 +310,15 @@ nav ul li a:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
-.project-img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.project-content {
-  padding: 1.5rem;
-}
-
-.project-content h3 {
+.project-card h4 {
+  font-size: 3rem;
+  font-style: italic;
   margin-bottom: 0.5rem;
   color: var(--dark);
 }
 
-.project-content p {
-  color: #64748b;
-  margin-bottom: 1.5rem;
-}
-
-.project-card button {
+.projects button{
+  text-align: center;
   background: var(--primary);
   color: white;
   border: none;
@@ -238,9 +326,11 @@ nav ul li a:hover {
   border-radius: 0.5rem;
   cursor: pointer;
   transition: 0.3s;
+  position: relative;
+  top: 50px;
 }
 
-.project-card button:hover {
+.projects button:hover {
   transform: translateY(-2px);
   background: var(--secondary);
 }
@@ -329,3 +419,26 @@ footer p {
 .social-links a:hover {
   color: var(--accent);
 }
+
+.enter-container { max-width: 600px;padding: 2rem;
+}
+h1 {font-size: 3rem;
+    margin-bottom: 1rem;
+}
+p {font-size: 1.2rem;margin-bottom: 2rem;opacity: 0.9;}
+.enter-btn {
+  background: white;
+  color: #6e8efb;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+.enter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          }
